@@ -59,8 +59,9 @@ local enemyScore
 
 -- Sounds
 
-local bell = audio.loadSound('bell.caf')
-
+local bell = audio.loadSound('se_maoudamashii_battle15.mp3')
+local mainbgm = audio.loadSound('bgm_maoudamashii_cyber21.mp3')
+local btnm = audio.loadSound('se_maoudamashii_system49.mp3')
 -- Variables
 
 local lastY
@@ -85,6 +86,7 @@ function Main()
 	titleView = display.newGroup(titleBg, playBtn)
 	
 	startButtonListeners('add')
+audio.play(mainbgm, {channel= 1, loops= -1})
 end
 
 function startButtonListeners(action)
@@ -92,6 +94,7 @@ function startButtonListeners(action)
 		playBtn:addEventListener('tap', showGameView)
 	else
 		playBtn:removeEventListener('tap', showGameView)
+		audio.play(btnm)
 	end
 end
 
